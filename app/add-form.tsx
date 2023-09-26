@@ -1,25 +1,25 @@
-'use client'
+"use client";
 
-import { experimental_useFormState as useFormState } from 'react-dom'
-import { experimental_useFormStatus as useFormStatus } from 'react-dom'
-import { createTodo } from '@/app/actions'
+import { experimental_useFormState as useFormState } from "react-dom";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import { createTodo } from "@/app/actions";
 
 const initialState = {
   message: null,
-}
+};
 
 function SubmitButton() {
-  const { pending } = useFormStatus()
+  const { pending } = useFormStatus();
 
   return (
     <button type="submit" aria-disabled={pending}>
       Add
     </button>
-  )
+  );
 }
 
 export function AddForm() {
-  const [state, formAction] = useFormState(createTodo, initialState)
+  const [state, formAction] = useFormState(createTodo, initialState);
 
   return (
     <form action={formAction}>
@@ -30,5 +30,5 @@ export function AddForm() {
         {state?.message}
       </p>
     </form>
-  )
+  );
 }
